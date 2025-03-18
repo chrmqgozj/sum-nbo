@@ -39,10 +39,20 @@ int main(int argc, char* argv[]) {
 		sum += value[i];
 		
 		if (i == n - 1) {
-			printf("%u(0x%04x) = %u(0x%04x)\n", value[i], value[i], sum, sum);
+			if (value[i] < 0x10000) {
+				printf("%u(0x%04x) = %u(0x%04x)\n", value[i], value[i], sum, sum);
+			}
+			else {
+				printf("%u(0x%08x) = %u(0x%08x)\n", value[i], value[i], sum, sum);
+			}
 		}
 		else {
-			printf("%u(0x%04x) + ", value[i], value[i]);
+			if (sum < 0x10000) {
+                        	printf("%u(0x%04x) + ", value[i], value[i]);
+			}
+                        else {
+				printf("%u(0x%08x) + ", value[i], value[i]);
+                        }
 		}
 
 	}	
